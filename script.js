@@ -19,7 +19,7 @@ const conexaoApiPokemon = async (pokemonResp) =>{
     }
 }
 
-const rederPokemon = async(pokemonResp) =>{
+const renderPokemon = async(pokemonResp) =>{
     pokemonName.innerHTML = "Loading...";
     pokemonNumber.innerHTML = "";
 
@@ -40,4 +40,21 @@ const rederPokemon = async(pokemonResp) =>{
     }
 }
 
-rederPokemon(pokemon)
+buttonPrev.addEventListener("click", ()=>{
+    if(pokemon > 1){
+        pokemon -= 1;
+        renderPokemon(pokemon);
+    }
+});
+
+buttonNext.addEventListener("click", ()=>{
+        pokemon += 1;
+        renderPokemon(pokemon);  
+});
+
+form.addEventListener("submit", (evento)=>{
+    evento.preventDefault();
+    renderPokemon(input.value.toLowerCase());
+})
+
+renderPokemon(pokemon)
